@@ -6,6 +6,7 @@ import java.io.FileNotFoundException
 import java.nio.file.Files
 
 import org.scalatest.{BeforeAndAfter, FunSuite, Matchers}
+import pioneer.resource
 import pioneer.pictures.Pictures._
 
 // this was helpful: http://otfried.org/scala/image.html

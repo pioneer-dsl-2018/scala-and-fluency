@@ -121,18 +121,6 @@ object Pictures {
     ***************************************************************************/
 
   /**
-    * Use this function to get a path to images provided with this project. For
-    * example, if you want to access the `image.png` file provided in the
-    * `/src/main/resources` directory, you would call:
-    * {{{resources("/image.png")}}}
-    * @param filename the path (relative to `resources`) to the image file
-    * @return absolute path to the provided image file
-    */
-  def resource(filename: String): String = {
-    getClass.getResource(filename).getPath
-  }
-
-  /**
     * Given a path to an image file, loads an image from that file
     * @param filename the path to the image file
     * @return a `BufferedImage` object that contains the image data loaded from
