@@ -9,11 +9,7 @@ import javax.imageio.ImageIO
 object Pictures {
 
   /**
-    * Flips the image in `inputFilename` along its horizontal axis and stores
-    * the resulting image in `outputFilename`.
-    * @param inputFilename path to the image file to modify
-    * @param outputFilename path to the image file for the saved result
-    * @return true if the image was successfully saved
+    * Flips an image along its horizontal axis
     */
   def flipHorizontal(inputFilename: String, outputFilename: String): Boolean = {
     val image = loadImage(inputFilename)
@@ -33,11 +29,7 @@ object Pictures {
   }
 
   /**
-    * Flips the image in `inputFilename` along its vertical axis and stores
-    * the resulting image in `outputFilename`.
-    * @param inputFilename path to the image file to modify
-    * @param outputFilename path to the image file for the saved result
-    * @return true if the image was successfully saved
+    * Flips an image along its vertical axis
     */
   def flipVertical(inputFilename: String, outputFilename: String): Boolean = {
     val image = loadImage(inputFilename)
@@ -57,11 +49,7 @@ object Pictures {
   }
 
   /**
-    * Rotates the image in `inputFilename` counter-clockwise 90 degrees and stores
-    * the resulting image in `outputFilename`.
-    * @param inputFilename path to the image file to modify
-    * @param outputFilename path to the image file for the saved result
-    * @return true if the image was successfully saved
+    * Rotates an image counter-clockwise 90 degrees
     */
   def rotateLeft(inputFilename: String, outputFilename: String): Boolean = {
     val image = loadImage(inputFilename)
@@ -81,11 +69,7 @@ object Pictures {
   }
 
   /**
-    * Rotates the image in `inputFilename` clockwise 90 degrees and stores
-    * the resulting image in `outputFilename`.
-    * @param inputFilename path to the image file to modify
-    * @param outputFilename path to the image file for the saved result
-    * @return true if the image was successfully saved
+    * Rotates an image clockwise 90 degrees
     */
   def rotateRight(inputFilename: String, outputFilename: String): Boolean = {
     val image = loadImage(inputFilename)
@@ -105,11 +89,7 @@ object Pictures {
   }
 
   /**
-    * Coverts the image in `inputFilename` to grayscale and stores
-    * the resulting image in `outputFilename`.
-    * @param inputFilename path to the image file to modify
-    * @param outputFilename path to the image file for the saved result
-    * @return true if the image was successfully saved
+    * Coverts an image to grayscale
     */
   def grayScale(inputFilename: String, outputFilename: String): Boolean = {
     val image = loadImage(inputFilename)
