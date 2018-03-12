@@ -9,7 +9,6 @@ import org.scalatest.{BeforeAndAfter, FunSuite, Matchers}
 import pioneer.resource
 import pioneer.pictures.Pictures._
 
-// this was helpful: http://otfried.org/scala/image.html
 class PicturesTest extends FunSuite with Matchers with BeforeAndAfter {
 
   test("Loading, then saving should not change the file") {
