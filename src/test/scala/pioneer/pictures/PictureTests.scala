@@ -7,15 +7,15 @@ import java.nio.file.Files
 
 import org.scalatest.{BeforeAndAfter, FunSuite, Matchers}
 import pioneer.resource
-import pioneer.pictures.Pictures._
+import pioneer.pictures.Picture._
 
-class PicturesTest extends FunSuite with Matchers with BeforeAndAfter {
+class PictureTests extends FunSuite with Matchers with BeforeAndAfter {
 
   test("Loading, then saving should not change the file") {
     val originalImage = loadImage(resource("/image.png"))
 
     // save the original file using another name
-    val resultPath = PicturesTest.makeTemporaryFile()
+    val resultPath = PictureTests.makeTemporaryFile()
     saveImage(originalImage, resultPath)
 
     // load data from saved file
@@ -34,7 +34,7 @@ class PicturesTest extends FunSuite with Matchers with BeforeAndAfter {
   }
 
   test("Loading a non-image file should raise an IllegalArgumentException") {
-    val badImagePath = PicturesTest.makeTemporaryFile()
+    val badImagePath = PictureTests.makeTemporaryFile()
 
     intercept[IllegalArgumentException] {
       // try to load image from path
@@ -152,14 +152,14 @@ class PicturesTest extends FunSuite with Matchers with BeforeAndAfter {
   def assertSameImage(original: BufferedImage, result: BufferedImage): Unit = {
     assert(original.getWidth === result.getWidth, "(widths differ)")
     assert(original.getHeight === result.getHeight, "(heights differ)")
-    val originalData = PicturesTest.getImageData(original)
-    val resultData = PicturesTest.getImageData(result)
+    val originalData = PictureTests.getImageData(original)
+    val resultData = PictureTests.getImageData(result)
     originalData should contain theSameElementsInOrderAs resultData
   }
 
 }
 
-object PicturesTest {
+object PictureTests {
   def makeTemporaryFile(): String =
     Files.createTempFile("result", "png").toAbsolutePath.toString
 

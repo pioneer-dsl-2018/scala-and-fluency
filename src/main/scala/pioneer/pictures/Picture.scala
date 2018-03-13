@@ -6,7 +6,7 @@ import java.io._
 import javax.imageio.ImageIO
 
 
-object Pictures {
+object Picture {
 
   /**
     * Flips an image along its horizontal axis
