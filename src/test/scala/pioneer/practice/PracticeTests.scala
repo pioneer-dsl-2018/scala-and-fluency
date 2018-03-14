@@ -21,11 +21,15 @@ class PracticeTests extends FunSuite {
   }
 
   test("Square of 5 is 25") {
-    assert(Practice.square(0) === 0)
+    assert(Practice.square(5) === 25)
   }
 
   test("Square of 10 is 100") {
-    assert(Practice.square(0) === 0)
+    assert(Practice.square(10) === 100)
+  }
+
+  test("Square of -1 is 1") {
+    assert(Practice.square(-1) === 1)
   }
 
   /**
