@@ -8,19 +8,17 @@ import javax.imageio.ImageIO
 
 object Picture {
 
-  /**
-    * Flips an image along its horizontal axis
-    */
+  /** Flips an image along its horizontal axis */
   def flipHorizontal(inputFilename: String, outputFilename: String): Boolean = {
     val image = loadImage(inputFilename)
 
-    // create a new, empty image to copy pixels over
+    // create a new, empty image to copy pixels into
     val width = image.getWidth
     val height = image.getHeight
     val imageType = image.getType
     val result = new BufferedImage(width, height, imageType)
 
-    // copy the pixels over, row-by-row, from right to left
+    // copy the pixels over, column-by-column, from right to left
     for (column <- 0 until width)
       for (row <- 0 until height)
         result.setRGB(column, row, image.getRGB(width - column - 1, row))
@@ -28,19 +26,17 @@ object Picture {
     saveImage(result, outputFilename)
   }
 
-  /**
-    * Flips an image along its vertical axis
-    */
+  /** Flips an image along its vertical axis */
   def flipVertical(inputFilename: String, outputFilename: String): Boolean = {
     val image = loadImage(inputFilename)
 
-    // create a new, empty image to copy pixels over
+    // create a new, empty image to copy pixels into
     val width = image.getWidth
     val height = image.getHeight
     val imageType = image.getType
     val result = new BufferedImage(width, height, imageType)
 
-    // copy the pixels over, row-by-row, from top to bottom
+    // copy the pixels over, column-by-column, from top to bottom
     for (column <- 0 until width)
       for (row <- 0 until height)
         result.setRGB(column, row, image.getRGB(column, height - row - 1))
@@ -48,19 +44,17 @@ object Picture {
     saveImage(result, outputFilename)
   }
 
-  /**
-    * Rotates an image counter-clockwise 90 degrees
-    */
+  /** Rotates an image counter-clockwise 90 degrees */
   def rotateLeft(inputFilename: String, outputFilename: String): Boolean = {
     val image = loadImage(inputFilename)
 
-    // create a new, empty image to copy pixels over
+    // create a new, empty image to copy pixels into
     val width = image.getHeight
     val height = image.getWidth
     val imageType = image.getType
     val result = new BufferedImage(width, height, imageType)
 
-    // copy the pixels over, row-by-row, from top to bottom
+    // copy the pixels over, column-by-column, while rotating
     for (column <- 0 until width)
       for (row <- 0 until height)
         result.setRGB(column, row, image.getRGB(height - row - 1, column))
@@ -68,19 +62,17 @@ object Picture {
     saveImage(result, outputFilename)
   }
 
-  /**
-    * Rotates an image clockwise 90 degrees
-    */
+  /** Rotates an image clockwise 90 degrees */
   def rotateRight(inputFilename: String, outputFilename: String): Boolean = {
     val image = loadImage(inputFilename)
 
-    // create a new, empty image to copy pixels over
+    // create a new, empty image to copy pixels into
     val width = image.getHeight
     val height = image.getWidth
     val imageType = image.getType
     val result = new BufferedImage(width, height, imageType)
 
-    // copy the pixels over, row-by-row, from top to bottom
+    // copy the pixels over, column-by-column, while rotating
     for (column <- 0 until width)
       for (row <- 0 until height)
         result.setRGB(column, row, image.getRGB(row, width - column - 1))
@@ -88,26 +80,25 @@ object Picture {
     saveImage(result, outputFilename)
   }
 
-  /**
-    * Coverts an image to grayscale
-    */
+  /** Coverts an image to grayscale */
   def grayScale(inputFilename: String, outputFilename: String): Boolean = {
     val image = loadImage(inputFilename)
 
-    // create a new, empty image to copy pixels over
+    // create a new, empty image to copy pixels into
     val width = image.getWidth
     val height = image.getHeight
     val imageType = image.getType
     val result = new BufferedImage(width, height, imageType)
 
-    // copy the pixels over, row-by-row, taking the average color values of
-    // each pixel
+    // copy the pixels over, column-by-column, grayscaling each pixel
     for (column <- 0 until width)
       for (row <- 0 until height) {
+        // grayscale the pixel by taking the average of the red, green, and
+        // blue parts of the pixel
         val pixel = new Color(image.getRGB(column, row))
-        val newColor: Int =
+        val gray: Int =
           Math.round((pixel.getRed + pixel.getGreen + pixel.getBlue) / 3f)
-        val newPixel = new Color(newColor, newColor, newColor)
+        val newPixel = new Color(gray, gray, gray)
         result.setRGB(column, row, newPixel.getRGB)
       }
 
@@ -117,7 +108,8 @@ object Picture {
   /*****************************************************************************
     * Helper functions
     *
-    * You shouldn't need to modify anything below this line.
+    * You shouldn't need to modify anything below this line (unless you want
+    * to change the names of some functions).
     ***************************************************************************/
 
   /**
