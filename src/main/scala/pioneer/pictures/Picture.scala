@@ -5,7 +5,11 @@ import java.awt.image.BufferedImage
 import java.io._
 import javax.imageio.ImageIO
 
-
+/**
+  * A small, image-processing library. Thanks to
+  *    http://otfried.org/scala/image.html
+  * for help on how to perform basic image processing in Scala
+  */
 object Picture {
 
   /** Flips an image along its horizontal axis */
